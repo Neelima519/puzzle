@@ -45,3 +45,16 @@
   font-size: 1rem;
   color: $gray60;
 }
+
+.finishButton {
+  background-color: $pink-light;
+  color: $black;
+  border-radius: 5px;
+  cursor: pointer;
+  height:25px
+}
+
+.finishedReading {
+  font-style: italic;
+}
+

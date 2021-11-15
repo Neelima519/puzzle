@@ -24,6 +24,21 @@ export class ReadingListEffects implements OnInitEffects {
     )
   );
 
+  finishReading$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ReadingListActions.finishedReading),
+      concatMap(({ param }) =>
+        this.http.put<ReadingListItem[]>(`/api/reading-list/${param.bookId}/finished`, param).pipe(
+          map((data: any) => ReadingListActions.loadReadingListSuccess({ list: data })
+          ),
+          catchError((error) =>
+            of(ReadingListActions.loadReadingListError({ error }))
+          )
+        )
+      )
+    )
+  );
+
   addBook$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ReadingListActions.addToReadingList),
@@ -58,5 +73,5 @@ export class ReadingListEffects implements OnInitEffects {
     return ReadingListActions.init();
   }
 
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(private actions$: Actions, private http: HttpClient) { }
 }
