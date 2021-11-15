@@ -59,4 +59,6 @@ Code Improvements:
 
 1. Implementing OnDestroy() function for component class to reduce memory leakage.
 
+2. Adding access modifiers for every function call
+
 
