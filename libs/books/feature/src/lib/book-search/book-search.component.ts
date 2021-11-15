@@ -9,6 +9,7 @@ import {
 } from '@tmo/books/data-access';
 import { FormBuilder } from '@angular/forms';
 import { Book } from '@tmo/shared/models';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'tmo-book-search',
@@ -17,7 +18,6 @@ import { Book } from '@tmo/shared/models';
 })
 export class BookSearchComponent implements OnInit {
   books: ReadingListBook[];
-
   searchForm = this.fb.group({
     term: ''
   });
@@ -36,6 +36,10 @@ export class BookSearchComponent implements OnInit {
       this.books = books;
     });
   }
+
+  searchBookList() {
+    this.searchBooks();
+    }
 
   formatDate(date: void | string) {
     return date
