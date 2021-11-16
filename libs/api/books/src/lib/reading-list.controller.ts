@@ -8,16 +8,16 @@ export class ReadingListController {
 
   @Get('/reading-list/')
   async getReadingList() {
-    return await this.readingList.getList();
+    return this.readingList.getList();
   }
 
   @Post('/reading-list/')
   async addToReadingList(@Body() item: Book) {
-    return await this.readingList.addBook(item);
+    return this.readingList.addBook(item);
   }
 
   @Delete('/reading-list/:id')
   async removeFromReadingList(@Param() params) {
-    return await this.readingList.removeBook(params.id);
+    return this.readingList.removeBook(params.id);
   }
 }
