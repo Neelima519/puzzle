@@ -31,7 +31,7 @@
           </div>
           <p [innerHTML]="b.description"></p>
           <div>
-            <button
+            <button *ngIf="!b.finished"
               mat-flat-button
               color="primary"
               (click)="addBookToReadingList(b)"
@@ -40,6 +40,7 @@
             >
               Want to Read
             </button>
+            <label class="finishReadingLabel" *ngIf="b.finished" aria-label="finished reading the book" >Finished</label>
           </div>
         </div>
       </div>

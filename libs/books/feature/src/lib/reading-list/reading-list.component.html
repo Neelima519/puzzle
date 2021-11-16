@@ -10,12 +10,15 @@
       </div>
     </div>
     <div>
-      <button
-        mat-icon-button
-        color="warn"
-        [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
-        (click)="removeFromReadingList(b)"
-      >
+      <button *ngIf="!b.finishedDate" class="finishButton" color="green"
+        [attr.aria-label]="'Finished ' + 'reading'+ b.title " (click)="finishedReadingBook(b)">
+        Finished Reading</button>
+      <label *ngIf="b.finishedDate" [attr.aria-label]="'Finished ' + 'reading'+ b.title " 
+       class="finishedReading">Reading finished on {{finishedDate}} </label>
+    </div>
+    <div>
+      <button mat-icon-button color="warn" [attr.aria-label]="'Remove ' + b.title + ' from reading list'"
+        (click)="removeFromReadingList(b)">
         <mat-icon aria-label="remove">remove_circle</mat-icon>
       </button>
     </div>
